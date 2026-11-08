@@ -1,0 +1,4 @@
+node_modules/
+.env
+# Customer data created while running (may contain personal details)
+data/

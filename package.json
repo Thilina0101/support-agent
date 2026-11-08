@@ -1,0 +1,1 @@
+{"name":"support-agent","version":"1.0.0","description":"AI customer support agent powered by Claude","type":"module","scripts":{"start":"node support.mjs"},"engines":{"node":">=20.12"},"license":"MIT","dependencies":{"@anthropic-ai/sdk":"^1.6.0","zod":"^4.6.7"}}

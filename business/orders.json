@@ -1,0 +1,47 @@
+[
+  {
+    "order_id": "BS-10421",
+    "email": "nina@example.com",
+    "customer_name": "Nina P.",
+    "placed": "2026-11-02",
+    "status": "shipped",
+    "items": [{ "name": "Brightside Pro Frying Pan 28cm", "qty": 1, "price": 1290 }, { "name": "Linen Tea Towel (set of 3)", "qty": 1, "price": 390 }],
+    "total": 1680,
+    "payment": "credit card",
+    "shipping_address": "Bangkok 10110",
+    "carrier": "Kerry Express",
+    "tracking": "KEX1234567890",
+    "shipped": "2026-11-03",
+    "estimated_delivery": "2026-11-05"
+  },
+  {
+    "order_id": "BS-10457",
+    "email": "somchai@example.com",
+    "customer_name": "Somchai K.",
+    "placed": "2026-11-06",
+    "status": "processing",
+    "items": [{ "name": "Queen Cotton Duvet", "qty": 1, "price": 2490 }],
+    "total": 2490,
+    "payment": "PromptPay",
+    "shipping_address": "Chiang Mai 50200",
+    "carrier": null,
+    "tracking": null,
+    "shipped": null,
+    "estimated_delivery": "2026-11-10"
+  },
+  {
+    "order_id": "BS-10388",
+    "email": "alex@example.com",
+    "customer_name": "Alex T.",
+    "placed": "2026-10-20",
+    "status": "delivered",
+    "items": [{ "name": "Ceramic Vase - Sand", "qty": 2, "price": 650 }],
+    "total": 1360,
+    "payment": "cash on delivery",
+    "shipping_address": "Nonthaburi 11000",
+    "carrier": "Thailand Post",
+    "tracking": "EF123456789TH",
+    "shipped": "2026-10-21",
+    "delivered": "2026-10-23"
+  }
+]
