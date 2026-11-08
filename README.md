@@ -91,21 +91,23 @@ With `SHOW_TOOLS=true`, each reply shows tokens and a running cost estimate.
 The business information is sent with every message but **prompt caching** makes repeats ~95% cheaper.
 A typical support chat costs about 1–5 US cents with the default settings.
 
-## LINE and WhatsApp (Karena Curry Rice)
+## LINE, WhatsApp and Facebook Messenger (Karena Curry Rice)
 
-`server.mjs` connects the same agent to **LINE** and/or **WhatsApp**, using the `business-karena/` folder:
-live menu from the POS, QR order status, and hand-off to staff. Each channel switches on when its settings are in `.env`.
+`server.mjs` connects the same agent to **LINE**, **WhatsApp** and/or **Facebook Page Messenger**, using the
+`business-karena/` folder: live menu from the POS, QR order status, and hand-off to staff.
+Each channel switches on when its settings are in `.env`.
 
 - **LINE:** [LINE-SETUP.md](LINE-SETUP.md)
 - **WhatsApp:** [WHATSAPP-SETUP.md](WHATSAPP-SETUP.md)
+- **Facebook Messenger:** [MESSENGER-SETUP.md](MESSENGER-SETUP.md)
 
 | File | Role |
 |---|---|
 | `core.mjs` | The agent: system prompt, Claude calls, tool loop (shared) |
 | `tools.mjs` | All tools: `lookup_order`, `create_ticket`, `get_menu`, `check_qr_order`, `handoff_to_staff` |
 | `chat.mjs` | Per-customer conversations, hand-off pause, transcripts (shared by channels) |
-| `line.mjs` / `whatsapp.mjs` | The LINE and WhatsApp connections |
-| `server.mjs` | The web server for both (`line-server.mjs` still works and starts the same thing) |
+| `line.mjs` / `whatsapp.mjs` / `messenger.mjs` | The LINE, WhatsApp and Messenger connections |
+| `server.mjs` | The web server for all channels (`line-server.mjs` still works and starts the same thing) |
 | `support.mjs` | Terminal tester |
 
 A business picks its tools with `"tools": [...]` in its `config.json`.

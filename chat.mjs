@@ -96,5 +96,12 @@ export function createChatHub({ agent, dataDir, handoffHours = 12, sessionMinute
 
   function saveAll() { for (const s of sessions.values()) saveTranscript(transcripts, s.id, config, s.messages); }
 
-  return { handle, isPaused: (channel, userId) => isPaused(`${channel}:${userId}`), firstTime, saveAll, config };
+  // Pause the bot for one customer (e.g. a staff member started replying by hand).
+  function pause(channel, userId, hours = handoffHours) {
+    const key = `${channel}:${userId}`;
+    const until = new Date(Date.now() + hours * 3600_000).toISOString();
+    if (!paused[key] || paused[key] < until) { paused[key] = until; savePaused(); log(`[${channel}:${String(userId).slice(-6)}] staff replied by hand; bot paused`); }
+  }
+
+  return { handle, isPaused: (channel, userId) => isPaused(`${channel}:${userId}`), pause, firstTime, saveAll, config };
 }
