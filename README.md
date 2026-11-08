@@ -91,8 +91,16 @@ With `SHOW_TOOLS=true`, each reply shows tokens and a running cost estimate.
 The business information is sent with every message but **prompt caching** makes repeats ~95% cheaper.
 A typical support chat costs about 1–5 US cents with the default settings.
 
-## Next steps
+## LINE Official Account (Karena Curry Rice)
 
-This terminal version is for testing the knowledge, tone and hand-off rules. To put it in front of real customers, the same logic can be connected to:
-- a **chat bubble on a website** (needs a small server so the API key stays secret), or
-- **LINE Official Account / Facebook Messenger** (via their webhook APIs).
+`line-server.mjs` connects the same agent to a LINE Official Account, using the `business-karena/` folder:
+live menu from the POS, QR order status, and hand-off to staff. **Setup guide: [LINE-SETUP.md](LINE-SETUP.md).**
+
+| File | Role |
+|---|---|
+| `core.mjs` | The agent: system prompt, Claude calls, tool loop (shared) |
+| `tools.mjs` | All tools: `lookup_order`, `create_ticket`, `get_menu`, `check_qr_order`, `handoff_to_staff` |
+| `support.mjs` | Terminal tester |
+| `line-server.mjs` | LINE webhook server |
+
+A business picks its tools with `"tools": [...]` in its `config.json`.
