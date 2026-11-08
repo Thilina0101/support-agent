@@ -91,16 +91,21 @@ With `SHOW_TOOLS=true`, each reply shows tokens and a running cost estimate.
 The business information is sent with every message but **prompt caching** makes repeats ~95% cheaper.
 A typical support chat costs about 1–5 US cents with the default settings.
 
-## LINE Official Account (Karena Curry Rice)
+## LINE and WhatsApp (Karena Curry Rice)
 
-`line-server.mjs` connects the same agent to a LINE Official Account, using the `business-karena/` folder:
-live menu from the POS, QR order status, and hand-off to staff. **Setup guide: [LINE-SETUP.md](LINE-SETUP.md).**
+`server.mjs` connects the same agent to **LINE** and/or **WhatsApp**, using the `business-karena/` folder:
+live menu from the POS, QR order status, and hand-off to staff. Each channel switches on when its settings are in `.env`.
+
+- **LINE:** [LINE-SETUP.md](LINE-SETUP.md)
+- **WhatsApp:** [WHATSAPP-SETUP.md](WHATSAPP-SETUP.md)
 
 | File | Role |
 |---|---|
 | `core.mjs` | The agent: system prompt, Claude calls, tool loop (shared) |
 | `tools.mjs` | All tools: `lookup_order`, `create_ticket`, `get_menu`, `check_qr_order`, `handoff_to_staff` |
+| `chat.mjs` | Per-customer conversations, hand-off pause, transcripts (shared by channels) |
+| `line.mjs` / `whatsapp.mjs` | The LINE and WhatsApp connections |
+| `server.mjs` | The web server for both (`line-server.mjs` still works and starts the same thing) |
 | `support.mjs` | Terminal tester |
-| `line-server.mjs` | LINE webhook server |
 
 A business picks its tools with `"tools": [...]` in its `config.json`.

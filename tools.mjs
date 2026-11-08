@@ -179,7 +179,7 @@ export const TOOL_LIBRARY = {
     rules: (config) => `Handing over to staff (handoff_to_staff):
 - Hand over when the customer asks for a person, has a complaint, a problem with their food, order or payment, wants a reservation, a large or catering order, or asks something you can't answer from the information you have.
 - You don't need their name or phone number to hand over; the chat itself is the contact. Write a clear summary for staff.
-- After handing over, tell the customer a staff member will reply in this chat${config.staff_hours ? ` (${config.staff_hours})` : ""}, and stop answering.`,
+- After handing over, tell the customer a staff member will contact them soon${config.staff_hours ? ` (${config.staff_hours})` : ""}, and stop answering.`,
     async run(input, ctx) {
       const t = saveTicket(ctx, input);
       ctx.log?.(`🙋 Handed over to staff: ticket ${t.id}${input.urgent ? " [URGENT]" : ""} — ${input.summary.slice(0, 120)}`);
